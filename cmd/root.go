@@ -32,7 +32,7 @@ var (
 		Long: `Given a process PID and a sequence of alternating signals and sleep durations,
 shutdown-sequencer will perform the sequence against the PID until either the process is dead,
 or the sequence has completed.`,
-		RunE: run,
+		RunE: rootExec,
 	}
 )
 
@@ -53,7 +53,7 @@ func init() {
 	rootCmd.MarkFlagRequired("sequence")
 }
 
-func run(cmd *cobra.Command, args []string) error {
+func rootExec(cmd *cobra.Command, args []string) error {
 	log.WithFields(log.Fields{
 		"pid":            processPID,
 		"sequence":       shutdownSequence,
