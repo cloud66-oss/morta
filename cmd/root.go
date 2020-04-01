@@ -145,7 +145,7 @@ func handleSecondsArg(arg, pid int) (bool, error) {
 	}).Info("Waiting for process to exit")
 
 	timeStart := time.Now()
-	timeEnd := timeStart.Add(time.Duration(arg))
+	timeEnd := timeStart.Add(time.Duration(arg) * time.Second)
 	for {
 		processExists, err := process.PidExists(int32(arg))
 		if err != nil {
