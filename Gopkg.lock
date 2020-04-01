@@ -21,6 +21,14 @@
   version = "v1.2.4"
 
 [[projects]]
+  digest = "1:31e761d97c76151dde79e9d28964a812c46efc5baee4085b86f68f0c654450de"
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
+  version = "v1.0.2"
+
+[[projects]]
   digest = "1:2fa1be3249f8e2871cc1d97922c9369582c9189fc17e5d805359abf29a44978e"
   name = "github.com/shirou/gopsutil"
   packages = [
@@ -33,6 +41,14 @@
   pruneopts = "UT"
   revision = "a3b23c5ccf4fb7b33d319fcaad53d7777907f4e1"
   version = "v2.20.2"
+
+[[projects]]
+  digest = "1:0599141a8403114d34f1e546604ad6c5361b70dfa80e80c635f438cdbf71b43a"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "d417be0fe654de640a82370515129985b407c7e3"
+  version = "v1.5.0"
 
 [[projects]]
   branch = "master"
@@ -48,6 +64,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/shirou/gopsutil/process"]
+  input-imports = [
+    "github.com/shirou/gopsutil/process",
+    "github.com/sirupsen/logrus",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
