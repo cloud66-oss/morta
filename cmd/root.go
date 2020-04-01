@@ -74,9 +74,10 @@ func run(cmd *cobra.Command, args []string) error {
 
 	currentArgType := argTypeSignal
 	for _, arg := range parsedShutdownSequence {
+		processHandled := false
 		switch currentArgType {
 		case argTypeSignal:
-			processHandled, err := handleSignalArg(arg, processPID)
+			processHandled, err = handleSignalArg(arg, processPID)
 			if err != nil {
 				return err
 			}
@@ -87,7 +88,7 @@ func run(cmd *cobra.Command, args []string) error {
 
 			currentArgType = argTypeSeconds
 		case argTypeSeconds:
-			processHandled, err := handleSecondsArg(arg, processPID)
+			processHandled, err = handleSecondsArg(arg, processPID)
 			if err != nil {
 				return err
 			}
@@ -97,6 +98,9 @@ func run(cmd *cobra.Command, args []string) error {
 			}
 
 			currentArgType = argTypeSignal
+		}
+		if processHandled {
+			break
 		}
 	}
 
