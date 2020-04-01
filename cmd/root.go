@@ -52,11 +52,15 @@ func init() {
 
 	rootCmd.MarkFlagRequired("pid")
 	rootCmd.MarkFlagRequired("sequence")
-
-	rootCmd.Flags().Lookup("polling-period").NoOptDefVal = strconv.Itoa(defaultPollingPeriod)
 }
 
 func run(cmd *cobra.Command, args []string) error {
+	log.WithFields(log.Fields{
+		"pid":            processPID,
+		"sequence":       shutdownSequence,
+		"polling-period": pollingPeriod,
+	}).Info("Received the following arguments")
+
 	parsedShutdownSequence, err := parseShutdownSequence()
 	if err != nil {
 		return err
