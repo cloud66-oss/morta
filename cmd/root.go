@@ -59,12 +59,18 @@ func run(cmd *cobra.Command, args []string) error {
 		"pid":            processPID,
 		"sequence":       shutdownSequence,
 		"polling-period": pollingPeriod,
-	}).Info("Received the following arguments")
+	}).Info("Arguments received")
 
 	parsedShutdownSequence, err := parseShutdownSequence()
 	if err != nil {
 		return err
 	}
+
+	log.WithFields(log.Fields{
+		"pid":            processPID,
+		"sequence":       parsedShutdownSequence,
+		"polling-period": pollingPeriod,
+	}).Info("Parsed arguments")
 
 	currentArgType := argTypeSignal
 	for _, arg := range parsedShutdownSequence {
