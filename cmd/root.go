@@ -8,7 +8,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -147,7 +146,7 @@ func handleSecondsArg(arg, pid int) (bool, error) {
 	timeStart := time.Now()
 	timeEnd := timeStart.Add(time.Duration(arg) * time.Second)
 	for {
-		processExists, err := process.PidExists(int32(arg))
+		processHandled, err := handleSignalArg(0, pid)
 		if err != nil {
 			log.WithFields(log.Fields{
 				"pid":     pid,
@@ -155,8 +154,7 @@ func handleSecondsArg(arg, pid int) (bool, error) {
 			}).Error("Encountered error when trying to determine if process still exists")
 			return false, err
 		}
-
-		if !processExists {
+		if processHandled {
 			log.WithFields(log.Fields{
 				"pid":     pid,
 				"seconds": arg,
