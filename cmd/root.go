@@ -47,7 +47,7 @@ func Execute() {
 func init() {
 	rootCmd.Flags().IntVarP(&processPID, "pid", "p", 0, "PID of the process to shut down (required)")
 	rootCmd.Flags().StringVarP(&shutdownSequence, "sequence", "s", "", "shutdown sequence to perform against the process (required)")
-	rootCmd.Flags().IntVarP(&pollingPeriod, "polling-period", "z", 1, "number of seconds to sleep before checking if the process is still alive")
+	rootCmd.Flags().IntVarP(&pollingPeriod, "polling-period", "z", defaultPollingPeriod, "number of seconds to sleep before checking if the process is still alive")
 
 	rootCmd.MarkFlagRequired("pid")
 	rootCmd.MarkFlagRequired("sequence")
