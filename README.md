@@ -6,10 +6,10 @@ Given a process PID and a sequence of alternating signals and sleep durations, s
 # Installation
 Head to the shutdown-sequencer [releases](https://github.com/cloud66/shutdown-sequencer/releases/latest) and download the latest version for your platform.
 
-You can then copy the file to /usr/local/bin and make sure it is renamed to shutdown-sequencer and that it is executable via `chmod +x /usr/local/bin/shutdown-sequencer`. From this point on, you can run `shutdown-sequencer update` to update it automatically.
+You can then copy the file to /usr/local/bin and make sure it is renamed to shutdown-sequencer, and that it is executable via `chmod +x /usr/local/bin/shutdown-sequencer`. From this point on, you can run `shutdown-sequencer update` to update it automatically.
 
 # Usage
-Let's use [unicorn](https://github.com/defunkt/unicorn) as an example, which is an HTTP server for Rack applications. Looking at its [help page for signals](https://github.com/defunkt/unicorn/blob/master/SIGNALS), we can see the following:
+Let's use [unicorn](https://github.com/defunkt/unicorn) as an example, which is an HTTP server for Rack applications. Looking at its [help page for signals](https://github.com/defunkt/unicorn/blob/master/SIGNALS), we can see the following signals defined for the master process:
 
 Signal | Result
 --- | ---
@@ -26,10 +26,22 @@ From this, a reasonable sequence of signals might be the following:
 
 Assuming that the master unicorn process has a PID of 1234, you can then run the following to perform the above sequence:
 ```
-shutdown-sequencer -p 1234 -s "quit:30:term:10:kill"
+$ shutdown-sequencer -p 1234 -s "quit:30:term:10:kill"
 ```
 
 You can then use this in your process manager to terminate the process as cleanly as possible. For example, if you're using [systemd](https://www.freedesktop.org/wiki/Software/systemd/), you can add the following to your service definition:
 ```
 ExecStop=-/usr/local/bin/shutdown-sequencer -p $MAINPID -s "quit:30:term:10:kill"
+```
+
+## Update
+Manually checks for updates. It can also switch the current release channel.
+```
+$ shutdown-sequencer update [--channel name]
+```
+
+## Version
+Shows the channel and the version
+```
+$ shutdown-sequencer version
 ```
