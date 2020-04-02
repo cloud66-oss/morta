@@ -6,10 +6,10 @@ Given a process PID and a sequence of alternating signals and sleep durations, s
 # Installation
 Head to the shutdown-sequencer [releases](https://github.com/cloud66/shutdown-sequencer/releases/latest) and download the latest version for your platform.
 
-You can then copy the file to /usr/local/bin and make sure it is renamed to shutdown-sequencer and that it is executable via `chmod +x /usr/local/bin/shutdown-sequencer`. From this point on, you can run `shutdown-sequencer update` to update it automatically.
+You can then copy the file to /usr/local/bin and make sure it is renamed to shutdown-sequencer, and that it is executable via `chmod +x /usr/local/bin/shutdown-sequencer`. From this point on, you can run `shutdown-sequencer update` to update it automatically.
 
 # Usage
-Let's use [unicorn](https://github.com/defunkt/unicorn) as an example, which is an HTTP server for Rack applications. Looking at its [help page for signals](https://github.com/defunkt/unicorn/blob/master/SIGNALS), we can see the following:
+Let's use [unicorn](https://github.com/defunkt/unicorn) as an example, which is an HTTP server for Rack applications. Looking at its [help page for signals](https://github.com/defunkt/unicorn/blob/master/SIGNALS), we can see the following signals defined for the master process:
 
 Signal | Result
 --- | ---
