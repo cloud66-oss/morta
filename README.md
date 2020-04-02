@@ -33,3 +33,15 @@ You can then use this in your process manager to terminate the process as cleanl
 ```
 ExecStop=-/usr/local/bin/shutdown-sequencer -p $MAINPID -s "quit:30:term:10:kill"
 ```
+
+## Update
+Manually checks for updates. It can also switch the current release channel.
+```
+$ shutdown-sequencer update [--channel name]
+```
+
+## Version
+Shows the channel and the version
+```
+$ shutdown-sequencer version
+```
