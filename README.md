@@ -26,7 +26,7 @@ From this, a reasonable sequence of signals might be the following:
 
 Assuming that the master unicorn process has a PID of 1234, you can then run the following to perform the above sequence:
 ```
-shutdown-sequencer -p 1234 -s "quit:30:term:10:kill"
+$ shutdown-sequencer -p 1234 -s "quit:30:term:10:kill"
 ```
 
 You can then use this in your process manager to terminate the process as cleanly as possible. For example, if you're using [systemd](https://www.freedesktop.org/wiki/Software/systemd/), you can add the following to your service definition:
