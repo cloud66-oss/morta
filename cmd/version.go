@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/cloud66-oss/trackman/utils"
+	"github.com/cloud66/shutdown-sequencer/utils"
 	"github.com/spf13/cobra"
 )
 
