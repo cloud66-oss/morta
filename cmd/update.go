@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/cloud66-oss/morta/utils"
 	"github.com/cloud66-oss/updater"
-	"github.com/cloud66/shutdown-sequencer/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -13,7 +13,7 @@ var (
 
 	updateCmd = &cobra.Command{
 		Use:   "update",
-		Short: "Update shutdown-sequencer to the latest version",
+		Short: "Update morta to the latest version",
 		RunE:  updateExec,
 	}
 )
@@ -26,7 +26,7 @@ func init() {
 
 func updateExec(cmd *cobra.Command, args []string) error {
 	worker, err := updater.NewUpdater(utils.Version, &updater.Options{
-		RemoteURL: "https://s3.amazonaws.com/downloads.cloud66.com/shutdown-sequencer/",
+		RemoteURL: "https://s3.amazonaws.com/downloads.cloud66.com/morta/",
 		Channel:   channel,
 	})
 	if err != nil {

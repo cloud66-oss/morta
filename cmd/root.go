@@ -27,10 +27,10 @@ var (
 	pollingPeriod    int
 
 	rootCmd = &cobra.Command{
-		Use:   "shutdown-sequencer",
+		Use:   "morta",
 		Short: "Perform a shutdown sequence against a process",
 		Long: `Given a process PID and a sequence of alternating signals and sleep durations,
-shutdown-sequencer will perform the sequence against the PID until either the process is dead,
+morta will perform the sequence against the PID until either the process is dead,
 or the sequence has completed.`,
 		RunE: rootExec,
 	}
@@ -182,7 +182,7 @@ func handleSecondsArg(arg, pid int) (bool, error) {
 func parseShutdownSequence() ([]int, error) {
 	splitShutdownSequence := strings.Split(shutdownSequence, ":")
 	if len(splitShutdownSequence)%2 == 0 {
-		return nil, fmt.Errorf("shutdown-sequencer: shutdown sequence must have an odd number of elements")
+		return nil, fmt.Errorf("morta: shutdown sequence must have an odd number of elements")
 	}
 
 	result := make([]int, len(splitShutdownSequence))
@@ -286,7 +286,7 @@ func parseSignalArgument(arg string) (int, error) {
 	case "xfsz":
 		signal = syscall.SIGXFSZ
 	default:
-		return 0, fmt.Errorf("shutdown-sequencer: invalid signal %s", arg)
+		return 0, fmt.Errorf("morta: invalid signal %s", arg)
 	}
 
 	return int(signal), nil
@@ -299,7 +299,7 @@ func parseSecondsArgument(arg string) (int, error) {
 	}
 
 	if seconds < 0 {
-		return 0, fmt.Errorf("shutdown-sequencer: number of seconds in shutdown sequence (%s) must be non-negative", arg)
+		return 0, fmt.Errorf("morta: number of seconds in shutdown sequence (%s) must be non-negative", arg)
 	}
 
 	return int(seconds), nil

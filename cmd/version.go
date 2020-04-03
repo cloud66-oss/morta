@@ -3,17 +3,17 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/cloud66/shutdown-sequencer/utils"
+	"github.com/cloud66-oss/morta/utils"
 	"github.com/spf13/cobra"
 )
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the version number of shutdown-sequencer",
+	Short: "Print the version number of morta",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("shutdown-sequencer")
+		fmt.Println("morta")
 		fmt.Println("(c) 2020 Cloud66 Inc.")
-		fmt.Println("shutdown-sequencer is a CLI to run a sequence of signals against a process")
+		fmt.Println("morta is a CLI to run a sequence of signals against a process")
 		fmt.Printf("%s/%s\n", utils.Channel, utils.Version)
 	},
 }

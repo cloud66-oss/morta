@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cloud66/shutdown-sequencer/cmd"
+	"github.com/cloud66-oss/morta/cmd"
 )
 
 func main() {

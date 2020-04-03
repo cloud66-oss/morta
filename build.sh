@@ -26,9 +26,9 @@ echo
 
 rm build/*
 
-curl -s http://downloads.cloud66.com.s3.amazonaws.com/shutdown-sequencer/versions.json | jq '.versions |= map(if (.channel == "'$channel'") then .version = "'$version'" else . end) | .versions |= map(if (.channel == "'$channel'") then .force = '$force' else . end)' > build/versions.json
+curl -s http://downloads.cloud66.com.s3.amazonaws.com/morta/versions.json | jq '.versions |= map(if (.channel == "'$channel'") then .version = "'$version'" else . end) | .versions |= map(if (.channel == "'$channel'") then .force = '$force' else . end)' > build/versions.json
 echo "Current Versions"
 cat build/versions.json | jq -r '.versions | map([.channel, .version] | join(": ")) | .[]'
 echo
 
-gox -ldflags "-X github.com/cloud66/shutdown-sequencer/utils.Version=$version -X github.com/cloud66/shutdown-sequencer/utils.Channel=$channel" -os="darwin linux" -arch="amd64" -output "build/{{.OS}}_{{.Arch}}_$version"
+gox -ldflags "-X github.com/cloud66-oss/morta/utils.Version=$version -X github.com/cloud66-oss/morta/utils.Channel=$channel" -os="darwin linux" -arch="amd64" -output "build/{{.OS}}_{{.Arch}}_$version"
