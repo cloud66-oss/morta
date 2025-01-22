@@ -259,6 +259,8 @@ func parseSignalArgument(arg string) (int, error) {
 		signal = syscall.SIGSTOP
 	case "sys":
 		signal = syscall.SIGSYS
+	case "t":
+		signal = syscall.Signal(0x0)
 	case "term":
 		signal = syscall.SIGTERM
 	case "trap":

@@ -12,7 +12,7 @@ var versionCmd = &cobra.Command{
 	Short: "Print the version number of morta",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("morta")
-		fmt.Println("(c) 2020 Cloud66 Inc.")
+		fmt.Println("(c) 2025 Cloud66 Inc.")
 		fmt.Println("morta is a CLI to run a sequence of signals against a process")
 		fmt.Printf("%s/%s\n", utils.Channel, utils.Version)
 	},
